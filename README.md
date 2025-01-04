@@ -1,12 +1,13 @@
-# Welcome to React-template + vite + Swc + React + TypeScript + tailwind css v3 👋
+# learn-react TypeScript tailwind Shadcn 
 
 ![Version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000)
+
+### 🏠 [Homepage](https://ttppoo121440.github.io/learn-react/)
 
 ## 安裝
 
 ```sh
-npx degit ttppoo121440/react-template your-project-name
-npm install
+npm install --force
 ```
 
 ## 使用
