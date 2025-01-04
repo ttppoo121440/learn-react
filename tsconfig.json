@@ -6,7 +6,7 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "ESNext",
+    "module": "esnext",
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
@@ -14,7 +14,7 @@
         "src/*"
       ]
     },
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "allowJs": false,
     "resolveJsonModule": true,
