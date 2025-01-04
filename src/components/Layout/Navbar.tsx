@@ -4,8 +4,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-200 text-white">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
-        <div className="text-lg font-bold">Logo</div>
-        <div className="flex space-x-4">
+        <div className="flex w-full justify-between space-x-4">
           {Array.from({ length: 8 }).map((_, index) => (
             <NavLink
               key={index}
