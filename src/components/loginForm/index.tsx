@@ -32,8 +32,8 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
     const result = await axiosClient.post(`admin/signin`, formData);
     if (result.data.success) {
       setIsAuth(true);
+      Cookies.set('token', JSON.stringify(result.data));
     }
-    Cookies.set('token', JSON.stringify(result.data));
   };
 
   return (
@@ -41,7 +41,9 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
       <div className={cn('flex w-96 flex-col  gap-6', className)}>
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">登入</CardTitle>
+            <CardTitle className="text-2xl">
+              <h1>登入</h1>
+            </CardTitle>
             <CardDescription>
               在下面輸入您的電子郵件以登入您的帳戶
             </CardDescription>
