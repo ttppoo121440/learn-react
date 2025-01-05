@@ -9,7 +9,7 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "jsxBracketSameLine": false,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "tailwindConfig": "./tailwind.config.js",
   "tailwindAttributes": ["wrapperClassName", "wrapClassName", "rootClassName"],
   "tailwindFunctions": ["classNames", "classnames", "twMerge"],
