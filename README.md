@@ -18,6 +18,13 @@ npm install --force
 npm start
 ```
 
+## 測試
+
+
+```sh
+npm run test
+```
+
 ## 使用說明
 
 ### 在 tsx 中使用 `@/`
