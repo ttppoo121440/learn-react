@@ -1,4 +1,4 @@
-type Is_enabledType = 0 | 1;
+export type Is_enabledType = 0 | 1;
 
 export type OnchangeType = (product: ProductType) => void;
 
@@ -12,7 +12,6 @@ export interface ProductType {
   price: number;
   title: string;
   unit: string;
-  num: number;
   imageUrl: string;
   imagesUrl: string[];
 }

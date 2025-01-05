@@ -9,7 +9,7 @@ if (userCookie) {
   token = user.token;
 }
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: process.env.VITE_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
     Authorization: `${token}`,

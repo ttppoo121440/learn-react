@@ -1,8 +1,8 @@
 import { HashRouter, Route, Routes } from 'react-router';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Week1 from './pages/week1';
-import Week2 from './pages/week2';
+import Week1 from './pages/Week1';
+import Week2 from './pages/Week2';
 
 const App = () => {
   return (

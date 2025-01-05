@@ -1,6 +1,6 @@
 import axiosClient from '@/api/axiosClient';
 import DetailProduct from '@/components/DetailProduct';
-import { LoginForm } from '@/components/login-form';
+import { LoginForm } from '@/components/loginForm';
 import ProductList from '@/components/ProductList';
 import { ProductType } from '@/types/productsType';
 import { useEffect, useState } from 'react';
@@ -21,7 +21,7 @@ const Week2 = () => {
 
   const getProducts = async () => {
     const result = await axiosClient.get(
-      `/api/${import.meta.env.VITE_BASE_PATH}/products/all`,
+      `/api/${process.env.VITE_BASE_PATH}/products/all`,
     );
     setProducts(result.data.products);
   };

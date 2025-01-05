@@ -12,7 +12,7 @@ const DetailProduct = ({ products }: DetailProductProps) => {
   }, [products]);
 
   if (!products) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   return (
