@@ -18,7 +18,7 @@ const ProductList = ({ products, setDetailProduct }: ProductListProps) => {
           )}
         </td>
         <td className="border border-gray-200 px-4 py-2">
-          <Button onClick={() => setDetailProduct(products)}> 查看細節</Button>
+          <Button onClick={() => setDetailProduct(products)}>查看細節</Button>
         </td>
       </tr>
     </>
