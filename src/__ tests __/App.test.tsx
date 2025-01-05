@@ -6,7 +6,7 @@ test('demo', () => {
   expect(true).toBe(true);
 });
 
-test('Renders the main page', () => {
+test('呈現主頁', () => {
   render(<App />);
   expect(true).toBeTruthy();
 });
