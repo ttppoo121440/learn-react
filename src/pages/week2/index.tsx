@@ -1,4 +1,5 @@
-import axiosClient from '@/api/axiosClient';
+import { productApi } from '@/api/services/product';
+import { signFlowApi } from '@/api/services/signFlow';
 import DetailProduct from '@/components/DetailProduct';
 import { LoginForm } from '@/components/loginForm';
 import ProductList from '@/components/ProductList';
@@ -13,17 +14,15 @@ const Week2 = () => {
   const [detailProduct, setDetailProduct] = useState<ProductType | null>(null);
 
   const isCheckAuth = async () => {
-    const result = await axiosClient.post(`/api/user/check`);
-    if (result.data.success) {
+    const result = await signFlowApi.isCheckAuth();
+    if (result.success) {
       setIsAuth(true);
     }
   };
 
   const getProducts = async () => {
-    const result = await axiosClient.get(
-      `/api/${process.env.VITE_BASE_PATH}/products/all`,
-    );
-    setProducts(result.data.products);
+    const result = await productApi.all();
+    setProducts(result.products);
   };
 
   useEffect(() => {

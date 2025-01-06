@@ -10,12 +10,13 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
-import axiosClient from '@/api/axiosClient';
-import { FormDataProps, LoginFormProps } from './types';
+import { LoginFormProps } from './types';
 import Cookies from 'js-cookie';
+import { FormLogin } from '@/api/services/signFlow/types';
+import { signFlowApi } from '@/api/services/signFlow';
 
 export function LoginForm({ className, setIsAuth }: LoginFormProps) {
-  const [formData, setFormData] = useState<FormDataProps>({
+  const [formData, setFormData] = useState<FormLogin>({
     username: '',
     password: '',
   });
@@ -29,10 +30,10 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await axiosClient.post(`admin/signin`, formData);
-    if (result.data.success) {
+    const result = await signFlowApi.signIn(formData);
+    if (result.success) {
       setIsAuth(true);
-      Cookies.set('token', JSON.stringify(result.data));
+      Cookies.set('token', JSON.stringify(result.token));
     }
   };
 
