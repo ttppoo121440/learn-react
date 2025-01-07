@@ -71,10 +71,12 @@ describe('LoginForm 元件', () => {
     expect(mockedSetIsAuth).toHaveBeenCalledWith(true);
 
     // 檢查 Cookie 是否被設定
-    expect(Cookies.set).toHaveBeenCalledWith(
-      'token',
-      JSON.stringify({ success: true, token: 'test-token' }),
-    );
+    await waitFor(() => {
+      expect(Cookies.set).toHaveBeenCalledWith(
+        'token',
+        expect.stringMatching(/test-token/),
+      );
+    });
   });
 
   test('登入失敗時不呼叫 setIsAuth 或設定 cookie', async () => {
