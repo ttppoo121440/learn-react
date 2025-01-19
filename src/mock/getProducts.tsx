@@ -5,8 +5,7 @@ export const getProducts: () => ProductType[] = () => {
     {
       category: '甜甜圈',
       content: '尺寸：14x14cm',
-      description:
-        '濃郁的草莓風味，中心填入滑順不膩口的卡士達內餡，帶來滿滿幸福感！',
+      description: '濃郁的草莓風味，中心填入滑順不膩口的卡士達內餡，帶來滿滿幸福感！',
       id: '-L9tH8jxVb2Ka_DYPwng',
       is_enabled: 1,
       origin_price: 150,
@@ -23,8 +22,7 @@ export const getProducts: () => ProductType[] = () => {
     {
       category: '蛋糕',
       content: '尺寸：6寸',
-      description:
-        '蜜蜂蜜蛋糕，夾層夾上酸酸甜甜的檸檬餡，清爽可口的滋味讓人口水直流！',
+      description: '蜜蜂蜜蛋糕，夾層夾上酸酸甜甜的檸檬餡，清爽可口的滋味讓人口水直流！',
       id: '-McJ-VvcwfN1_Ye_NtVA',
       is_enabled: 1,
       origin_price: 1000,
