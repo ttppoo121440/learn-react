@@ -1,21 +1,17 @@
-import { cn } from '@/lib/utils';
+import Cookies from 'js-cookie';
+import { useState } from 'react';
+
+import { signFlowApi } from '@/api/services/signFlow';
+import { FormLogin } from '@/api/services/signFlow/types';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
-import { LoginFormProps } from './types';
-import Cookies from 'js-cookie';
-import { FormLogin } from '@/api/services/signFlow/types';
-import { signFlowApi } from '@/api/services/signFlow';
+import { cn } from '@/lib/utils';
 
-export function LoginForm({ className, setIsAuth }: LoginFormProps) {
+import { LoginFormProps } from './types';
+
+const LoginForm = ({ className, setIsAuth }: LoginFormProps) => {
   const [formData, setFormData] = useState<FormLogin>({
     username: '',
     password: '',
@@ -31,9 +27,11 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const result = await signFlowApi.signIn(formData);
+    console.log(result);
+
     if (result.success) {
       setIsAuth(true);
-      Cookies.set('token', JSON.stringify(result.token));
+      Cookies.set('react-token', result.token, { expires: 7, secure: true });
     }
   };
 
@@ -45,9 +43,7 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
             <CardTitle className="text-2xl">
               <h1>登入</h1>
             </CardTitle>
-            <CardDescription>
-              在下面輸入您的電子郵件以登入您的帳戶
-            </CardDescription>
+            <CardDescription>在下面輸入您的電子郵件以登入您的帳戶</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
@@ -85,4 +81,6 @@ export function LoginForm({ className, setIsAuth }: LoginFormProps) {
       </div>
     </div>
   );
-}
+};
+
+export default LoginForm;
