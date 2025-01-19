@@ -18,10 +18,7 @@ const Loading = () => {
           <h5 className="mt-4 h-6 w-32 animate-pulse bg-gray-200"></h5>
           <div className="mt-2 flex flex-wrap gap-2">
             {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="h-20 w-20 animate-pulse rounded bg-gray-200"
-              ></div>
+              <div key={index} className="size-20 animate-pulse rounded bg-gray-200"></div>
             ))}
           </div>
         </div>
