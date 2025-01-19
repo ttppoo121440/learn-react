@@ -8,15 +8,6 @@ const axiosClient = axios.create({
   },
 });
 
-const redirectToLogin = (error: AxiosError) => {
-  const status = error?.response?.status || null;
-  if (status === 401) {
-    if (typeof window !== 'undefined') {
-      window.location.href = '/#login';
-    }
-  }
-};
-
 axiosClient.interceptors.request.use(
   (config) => {
     const userCookie = cookies.get('react-token');
@@ -36,10 +27,8 @@ axiosClient.interceptors.response.use(
   },
   (error: AxiosError) => {
     if (error.response) {
-      redirectToLogin(error);
       return Promise.reject(error.response.data);
     } else {
-      redirectToLogin(error);
       return Promise.reject(error);
     }
   },
