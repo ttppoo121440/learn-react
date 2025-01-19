@@ -11,14 +11,24 @@ import eslintPlugin from 'vite-plugin-eslint';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   const envWithProcessPrefix = Object.entries(env).reduce((prev, [key, val]) => {
-    return {
-      ...prev,
-      ['process.env.' + key]: `"${val}"`,
-    };
+    // 過濾掉無效鍵
+    if (!/[()]/.test(key)) {
+      return {
+        ...prev,
+        ['process.env.' + key]: `"${val}"`,
+      };
+    }
+    return prev;
   }, {});
   return {
     base: mode === 'development' ? '/' : '/learn-react/',
-    plugins: [react(), eslintPlugin(), EnvironmentPlugin('all')],
+    plugins: [
+      react(),
+      eslintPlugin(),
+      EnvironmentPlugin({
+        NODE_ENV: process.env.NODE_ENV || 'development',
+      }),
+    ],
     resolve: {
       alias: {
         '@': path.resolve('./src'),
