@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
+
 import { productApi } from '@/api/services/product';
 import { signFlowApi } from '@/api/services/signFlow';
 import DetailProduct from '@/components/DetailProduct';
-import { LoginForm } from '@/components/loginForm';
 import ProductList from '@/components/ProductList';
+import LoginForm from '@/components/loginForm';
 import { ProductType } from '@/types/productsType';
-import { useEffect, useState } from 'react';
 
 const tableTitle = ['產品名稱', '原價', '售價', '是否啟用', '查看細節'];
 
@@ -21,7 +22,9 @@ const Week2 = () => {
   };
 
   const getProducts = async () => {
-    const result = await productApi.all();
+    console.log('getProducts');
+
+    const result = await productApi.all({});
     setProducts(result.products);
   };
 
@@ -29,7 +32,6 @@ const Week2 = () => {
     isCheckAuth();
     getProducts();
   }, []);
-
   return (
     <>
       {isAuth ? (
@@ -41,10 +43,7 @@ const Week2 = () => {
                 <thead>
                   <tr className="bg-gray-100">
                     {tableTitle.map((title) => (
-                      <th
-                        key={title}
-                        className="border border-gray-200 px-4 py-2"
-                      >
+                      <th key={title} className="border border-gray-200 px-4 py-2 text-black">
                         {title}
                       </th>
                     ))}
@@ -52,11 +51,7 @@ const Week2 = () => {
                 </thead>
                 <tbody>
                   {products.map((item: ProductType) => (
-                    <ProductList
-                      key={item.id}
-                      products={item}
-                      setDetailProduct={setDetailProduct}
-                    />
+                    <ProductList key={item.id} products={item} setDetailProduct={setDetailProduct} />
                   ))}
                 </tbody>
               </table>

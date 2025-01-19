@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+
 import DetailProduct from '@/components/DetailProduct';
 import ProductList from '@/components/ProductList';
 import { getProducts } from '@/mock/getProducts';
 import { ProductType } from '@/types/productsType';
-import { useEffect, useState } from 'react';
 
 const tableTitle = ['產品名稱', '原價', '售價', '是否啟用', '查看細節'];
 
@@ -26,7 +27,7 @@ const Week1 = () => {
             <thead>
               <tr className="bg-gray-100">
                 {tableTitle.map((title) => (
-                  <th key={title} className="border border-gray-200 px-4 py-2">
+                  <th key={title} className="border border-gray-200 px-4 py-2 text-black">
                     {title}
                   </th>
                 ))}
@@ -34,11 +35,7 @@ const Week1 = () => {
             </thead>
             <tbody>
               {products.map((item: ProductType) => (
-                <ProductList
-                  key={item.id}
-                  products={item}
-                  setDetailProduct={setDetailProduct}
-                />
+                <ProductList key={item.id} products={item} setDetailProduct={setDetailProduct} />
               ))}
             </tbody>
           </table>
