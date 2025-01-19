@@ -88,6 +88,7 @@ describe('Week1 頁面', () => {
     const firstProduct = mockProducts[0];
 
     expect(screen.getByText(firstProduct.title)).toBeInTheDocument();
+    // expect(screen.getByText(firstProduct.description)).toBeInTheDocument();
     expect(
       screen.getByText(firstProduct.origin_price.toString()),
     ).toBeInTheDocument();
