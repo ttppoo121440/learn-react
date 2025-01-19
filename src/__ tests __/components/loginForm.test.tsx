@@ -1,7 +1,8 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import axiosClient from '@/api/axiosClient';
 import Cookies from 'js-cookie';
-import { LoginForm } from '@/components/loginForm';
+
+import axiosClient from '@/api/axiosClient';
+import LoginForm from '@/components/loginForm';
 
 jest.mock('js-cookie', () => ({
   set: jest.fn(),
@@ -27,12 +28,8 @@ describe('LoginForm 元件', () => {
     render(<LoginForm setIsAuth={mockedSetIsAuth} className="test-class" />);
 
     // 測試標題和描述是否正確渲染
-    expect(
-      screen.getByRole('heading', { level: 1, name: /登入/i }),
-    ).toBeInTheDocument(); // 尋找標題
-    expect(
-      screen.getByText(/在下面輸入您的電子郵件以登入您的帳戶/i),
-    ).toBeInTheDocument(); // 尋找描述
+    expect(screen.getByRole('heading', { level: 1, name: /登入/i })).toBeInTheDocument(); // 尋找標題
+    expect(screen.getByText(/在下面輸入您的電子郵件以登入您的帳戶/i)).toBeInTheDocument(); // 尋找描述
 
     // 測試表單元素是否存在
     expect(screen.getByLabelText(/信箱/i)).toBeInTheDocument();
@@ -72,10 +69,7 @@ describe('LoginForm 元件', () => {
 
     // 檢查 Cookie 是否被設定
     await waitFor(() => {
-      expect(Cookies.set).toHaveBeenCalledWith(
-        'token',
-        expect.stringMatching(/test-token/),
-      );
+      expect(Cookies.set).toHaveBeenCalledWith('token', expect.stringMatching(/test-token/));
     });
   });
 

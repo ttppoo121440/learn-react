@@ -1,7 +1,8 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+
 import { getProducts } from '@/mock/getProducts';
-import { ProductType } from '@/types/productsType';
 import Week1 from '@/pages/Week1';
+import { ProductType } from '@/types/productsType';
 
 const mockProducts: ProductType[] = [
   {
@@ -24,8 +25,7 @@ const mockProducts: ProductType[] = [
   {
     category: '蛋糕',
     content: '尺寸：6寸',
-    description:
-      '蜜蜂蜜蛋糕，夾層夾上酸酸甜甜的檸檬餡，清爽可口的滋味讓人口水直流！',
+    description: '蜜蜂蜜蛋糕，夾層夾上酸酸甜甜的檸檬餡，清爽可口的滋味讓人口水直流！',
     id: '-McJ-VvcwfN1_Ye_NtVA',
     is_enabled: 1,
     origin_price: 1000,
@@ -89,9 +89,7 @@ describe('Week1 頁面', () => {
 
     expect(screen.getByText(firstProduct.title)).toBeInTheDocument();
     // expect(screen.getByText(firstProduct.description)).toBeInTheDocument();
-    expect(
-      screen.getByText(firstProduct.origin_price.toString()),
-    ).toBeInTheDocument();
+    expect(screen.getByText(firstProduct.origin_price.toString())).toBeInTheDocument();
     expect(screen.getByText(firstProduct.price.toString())).toBeInTheDocument();
   });
 
@@ -109,9 +107,7 @@ describe('Week1 頁面', () => {
     expect(skeletonElements.length).toBeGreaterThan(0);
 
     // 檢查預設的圖片預留區域
-    const imagePlaceholder = document.querySelector(
-      '.h-64.w-full.animate-pulse',
-    );
+    const imagePlaceholder = document.querySelector('.h-64.w-full.animate-pulse');
     expect(imagePlaceholder).toBeInTheDocument();
   });
 });

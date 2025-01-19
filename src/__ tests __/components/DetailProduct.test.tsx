@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Is_enabledType, ProductType } from '@/types/productsType';
+
 import DetailProduct from '@/components/DetailProduct';
+import { Is_enabledType, ProductType } from '@/types/productsType';
 
 const mockProduct: ProductType = {
   category: '熱門',
   content: '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
-  description:
-    '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
+  description: '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
   id: '-OFjZwJOMyuUW9RGJN6K',
   imageUrl:
     'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/iyrGvtKOQV9d3ofiHFChFdyghFK5zKDTjio1jkGhP1tMmpBsicl4MfodqqAdkvLR8rIqjm9JFZk5N9uYFNajCSaErGh2SBHv7mixnhEEJqzIz8Pd0f7kCgXLtghPuld1.png',
@@ -26,11 +26,7 @@ describe('DetailProduct 元件', () => {
     // 檢查產品標題是否顯示
     expect(screen.getByText(/柴茶拿鐵/i)).toBeInTheDocument();
     // 檢查是否顯示產品描述
-    expect(
-      screen.getByText(
-        /混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。/i,
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。/i)).toBeInTheDocument();
     // 檢查產品價格是否顯示
     expect(screen.getByText(/150 元/i)).toBeInTheDocument();
     // 檢查產品原價是否顯示刪除線
@@ -53,6 +49,6 @@ describe('DetailProduct 元件', () => {
     fireEvent.click(secondImage);
 
     // 點擊後，主圖像應變為第一幅圖像
-    expect(firstImage).toHaveAttribute('src', mockProduct.imagesUrl[0]);
+    expect(firstImage).toHaveAttribute('src', mockProduct.imagesUrl ? mockProduct.imagesUrl[0] : '');
   });
 });

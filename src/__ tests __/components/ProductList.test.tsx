@@ -1,12 +1,12 @@
+import { render, screen, fireEvent } from '@testing-library/react';
+
 import ProductList from '@/components/ProductList';
 import { Is_enabledType } from '@/types/productsType';
-import { render, screen, fireEvent } from '@testing-library/react';
 
 const mockProduct = {
   category: '熱門',
   content: '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
-  description:
-    '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
+  description: '混合了異國情調的香料，甜味和蒸牛奶，可達到辛辣和甜味的完美平衡。',
   id: '-OFjZwJOMyuUW9RGJN6K',
   imageUrl:
     'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/iyrGvtKOQV9d3ofiHFChFdyghFK5zKDTjio1jkGhP1tMmpBsicl4MfodqqAdkvLR8rIqjm9JFZk5N9uYFNajCSaErGh2SBHv7mixnhEEJqzIz8Pd0f7kCgXLtghPuld1.png',
@@ -26,10 +26,7 @@ describe('ProductList 元件', () => {
     render(
       <table>
         <tbody>
-          <ProductList
-            products={mockProduct}
-            setDetailProduct={mockSetDetailProduct}
-          />
+          <ProductList products={mockProduct} setDetailProduct={mockSetDetailProduct} />
         </tbody>
       </table>,
     );
@@ -49,10 +46,7 @@ describe('ProductList 元件', () => {
     render(
       <table>
         <tbody>
-          <ProductList
-            products={disabledProduct}
-            setDetailProduct={mockSetDetailProduct}
-          />
+          <ProductList products={disabledProduct} setDetailProduct={mockSetDetailProduct} />
         </tbody>
       </table>,
     );
@@ -64,10 +58,7 @@ describe('ProductList 元件', () => {
     render(
       <table>
         <tbody>
-          <ProductList
-            products={mockProduct}
-            setDetailProduct={mockSetDetailProduct}
-          />
+          <ProductList products={mockProduct} setDetailProduct={mockSetDetailProduct} />
         </tbody>
       </table>,
     );
