@@ -1,17 +1,7 @@
-export interface LoginResponse {
-  expired: number;
-  token: string;
-  uid: string;
-  username: string;
-  success: boolean;
-}
+import { z } from 'zod';
 
-export interface AuthResponse {
-  success: boolean;
-  uid: string;
-}
+import { AuthResponseSchema, FormLoginSchema, LoginResponseSchema } from '@/schema/signFlowSchema';
 
-export interface FormLogin {
-  username: string;
-  password: string;
-}
+export type LoginResponse = z.infer<typeof LoginResponseSchema>;
+export type AuthResponse = z.infer<typeof AuthResponseSchema>;
+export type FormLogin = z.infer<typeof FormLoginSchema>;
