@@ -13,7 +13,7 @@ export interface ProductType {
   title: string;
   unit: string;
   imageUrl: string;
-  imagesUrl: string[];
+  imagesUrl?: string[];
 }
 
 export interface ProductListProps {
