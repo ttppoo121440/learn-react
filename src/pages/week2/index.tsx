@@ -22,8 +22,6 @@ const Week2 = () => {
   };
 
   const getProducts = async () => {
-    console.log('getProducts');
-
     const result = await productApi.all({});
     setProducts(result.products);
   };
