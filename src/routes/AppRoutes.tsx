@@ -7,6 +7,8 @@ import Week1 from '@/pages/Week1';
 import Week2 from '@/pages/Week2';
 import Week3 from '@/pages/Week3';
 import ProductManagement from '@/pages/Week3/components/ProductManagement';
+import Week4 from '@/pages/Week4';
+import ImageManagement from '@/pages/Week4/components/ImageManagement';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -21,8 +23,13 @@ const AppRoutes = () => {
           <Route path="/week2" element={<Week2 />} />
           <Route element={<PrivateRoute />}>
             <Route path="/week3" element={<Week3 />}>
-              <Route path="product-management" element={<ProductManagement />} />
-              <Route index element={<Navigate to="product-management" />} />
+              <Route path="products" element={<ProductManagement />} />
+              <Route index element={<Navigate to="products" />} />
+            </Route>
+            <Route path="/week4" element={<Week4 />}>
+              <Route path="images" element={<ImageManagement />} />
+              <Route path="products" element={<ProductManagement />} />
+              <Route index element={<Navigate to="images" />} />
             </Route>
           </Route>
         </Routes>
