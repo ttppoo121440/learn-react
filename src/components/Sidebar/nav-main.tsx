@@ -18,6 +18,11 @@ import { NavMainProps } from './types';
 export const NavMain: React.FC<NavMainProps> = ({ items }) => {
   const location = useLocation();
 
+  const isActiveUrl = (url: string) => {
+    const currentPath = location.pathname;
+    const targetPath = url.replace('/#', '');
+    return currentPath === targetPath;
+  };
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Learn React</SidebarGroupLabel>
@@ -29,7 +34,7 @@ export const NavMain: React.FC<NavMainProps> = ({ items }) => {
                 <SidebarMenuButton
                   tooltip={item.title}
                   onClick={item.onClick}
-                  className={location.pathname === item.url ? 'bg-gray-200' : ''}
+                  className={isActiveUrl(item.url!) ? 'bg-gray-200' : ''}
                 >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
@@ -42,7 +47,7 @@ export const NavMain: React.FC<NavMainProps> = ({ items }) => {
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
                         {subItem.url ? (
-                          <a href={subItem.url} className={location.pathname === subItem.url ? 'bg-primary' : ''}>
+                          <a href={subItem.url} className={isActiveUrl(subItem.url) ? 'bg-primary' : ''}>
                             <span>{subItem.title}</span>
                           </a>
                         ) : (

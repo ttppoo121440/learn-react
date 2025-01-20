@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { Sidebar, SidebarContent, SidebarRail } from '@/components/ui/sidebar';
 import { useLogOutMutation } from '@/hooks/useSignFlow';
 
@@ -7,6 +9,13 @@ import { NavMain } from './nav-main';
 
 export const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const { mutate: logout } = useLogOutMutation();
+  const location = useLocation();
+
+  const basePath = location.pathname.startsWith('/week4') ? '/week4' : '/week3';
+
+  const createHashUrl = (path: string) => {
+    return `/#${path}`;
+  };
 
   const data = {
     navMain: [
@@ -18,7 +27,11 @@ export const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) =
         items: [
           {
             title: '產品管理',
-            url: '/week3/product-management',
+            url: createHashUrl(`${basePath}/products`),
+          },
+          {
+            title: '圖片管理',
+            url: createHashUrl(`${basePath}/images`),
           },
           {
             title: '登出',
