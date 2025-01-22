@@ -76,7 +76,10 @@ const FormInput = <T extends FieldValues>({
                         pattern: '[0-9]*',
                         onChange: (e) => {
                           const value = e.target.value;
-                          field.onChange(value === '' ? '' : Number(value));
+                          if (/^\d*$/.test(value)) {
+                            const numericValue = value === '' ? '' : Number(value);
+                            field.onChange(numericValue);
+                          }
                         },
                       })}
                     />
