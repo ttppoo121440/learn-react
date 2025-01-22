@@ -30,10 +30,6 @@ export const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) =
             url: createHashUrl(`${basePath}/products`),
           },
           {
-            title: '圖片管理',
-            url: createHashUrl(`${basePath}/images`),
-          },
-          {
             title: '登出',
             onClick: () => {
               logout();
