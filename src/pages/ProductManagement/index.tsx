@@ -12,6 +12,7 @@ import {
   usePostProductMutation,
   useUpdateProductMutation,
 } from '@/hooks/useProduct';
+import { useUploadMutation } from '@/hooks/useUpload';
 import useDialogStore from '@/store/dialogStore';
 import usePaginationStore from '@/store/paginationStore';
 
@@ -22,12 +23,19 @@ const ProductManagement = () => {
   const { mutate: createProduct } = usePostProductMutation();
   const { mutate: updateProduct } = useUpdateProductMutation();
   const { mutate: deleteProduct } = useDeleteProductMutation();
+
   const { openDialog } = useDialogStore();
   const { currentPage } = usePaginationStore();
   const { data, isFetching } = useGetProducts({ page: currentPage + 1, category: '' });
   const totalPages = data?.pagination.total_pages || 0;
-
-  const { form, productFormFields, initialValues } = useFormConfig();
+  const { mutate: uploadImageUrl, data: imageUrlResult } = useUploadMutation();
+  const { mutate: uploadImagesUrl, data: imagesUrlResult } = useUploadMutation();
+  const { form, productFormFields, initialValues } = useFormConfig({
+    uploadImageUrl,
+    imageUrlResult,
+    uploadImagesUrl,
+    imagesUrlResult,
+  });
 
   const deleteData = useCallback(
     (id: ProductVoType['id']) => {
@@ -39,6 +47,7 @@ const ProductManagement = () => {
   const columns = useMemo(() => Columns(openDialog, deleteData), [openDialog, deleteData]);
 
   const table = useTableConfig(data?.products ?? [], columns);
+
   return (
     <div className="px-5">
       <div className="my-5 flex">
