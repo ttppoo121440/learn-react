@@ -14,7 +14,7 @@ const FormRenderer = <T extends FieldValues>({ FormFields, methods }: FormRender
     <FormProvider {...methods}>
       <div className="my-5">
         {FormFields.map((field: FormFieldConfig<T>) => {
-          const { name, label, type, placeholder, id, required } = field;
+          const { name, label, type, placeholder, id, required, onFileUpload } = field;
 
           const hasOptions = (f: typeof field): f is typeof field & { options: Option[] } => 'options' in f;
 
@@ -74,7 +74,15 @@ const FormRenderer = <T extends FieldValues>({ FormFields, methods }: FormRender
               }
               break;
             case 'imagesUrl':
-              return <FormImagesInput key={name as string} name={name as string} maxCount={5} />;
+              return (
+                <FormImagesInput
+                  label={label}
+                  key={name as string}
+                  name={name as string}
+                  maxCount={5}
+                  onFileUpload={onFileUpload}
+                />
+              );
             default:
               return (
                 <FormInput
@@ -84,6 +92,7 @@ const FormRenderer = <T extends FieldValues>({ FormFields, methods }: FormRender
                   type={type}
                   placeholder={placeholder}
                   required={required}
+                  onFileUpload={onFileUpload}
                 />
               );
           }
