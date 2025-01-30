@@ -3,10 +3,10 @@ import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
+import ProductManagement from '@/pages/ProductManagement';
 import Week1 from '@/pages/Week1';
 import Week2 from '@/pages/Week2';
 import Week3 from '@/pages/Week3';
-import ProductManagement from '@/pages/Week3/components/ProductManagement';
 import Week4 from '@/pages/Week4';
 
 import PrivateRoute from './PrivateRoute';
