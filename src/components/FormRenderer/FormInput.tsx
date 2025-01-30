@@ -14,17 +14,26 @@ const FormInput = <T extends FieldValues>({
   className,
   required,
   disabled,
+  onFileUpload,
 }: TextFieldConfig<T>) => {
   const { control, setValue, watch } = useFormContext<T>();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const previousUrlRef = useRef<string | null>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       setValue(name as Path<T>, file as T[Path<T>]);
       const newPreviewUrl = URL.createObjectURL(file);
       setPreviewUrl(newPreviewUrl);
+
+      if (onFileUpload) {
+        try {
+          await onFileUpload(file);
+        } catch (error) {
+          console.log(error);
+        }
+      }
     }
   };
 
