@@ -14,6 +14,7 @@ interface BaseFieldConfig<T extends FieldValues> {
   disabled?: boolean;
   className?: string;
   placeholder?: string;
+  onFileUpload?: (file: File) => void;
 }
 
 export type TextFieldConfig<T extends FieldValues> = BaseFieldConfig<T> & {
