@@ -11,8 +11,19 @@ export const BaseProductSchema = z.object({
   origin_price: z.number().nonnegative({ message: '必須是非負數' }),
   price: z.number().nonnegative({ message: '必須是非負數' }),
   num: z.number().optional(),
-  imageUrl: z.string(),
+  imageUrl: z
+    .union([
+      z.string().nullable().optional(),
+      z
+        .instanceof(File)
+        .refine((file) => file.type.startsWith('image/'), {
+          message: '必須是有效的圖片文件',
+        })
+        .optional(),
+    ])
+    .optional(),
   imagesUrl: z.array(z.string()).optional(),
+  tags: z.string().optional(),
 });
 
 export const ProductVoSchema = BaseProductSchema.extend({
