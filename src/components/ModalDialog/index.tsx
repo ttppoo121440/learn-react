@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import useDialogStore from '@/store/dialogStore';
 
+import ClipLoading from '../ClipLoading';
 import FormRenderer from '../FormRenderer';
 import { Button } from '../ui/button';
 
@@ -23,6 +24,7 @@ const ModalDialog = <T extends object>({
   FormFields,
   createData,
   updateData,
+  loading,
 }: ModalDialogProps<T>) => {
   const { isOpen, dialogType, closeDialog, currentItem } = useDialogStore();
 
@@ -54,17 +56,16 @@ const ModalDialog = <T extends object>({
 
   useEffect(() => {
     if (isOpen) {
-      if (dialogType === 'edit') {
-        methods.reset(currentItem as T);
-      } else {
-        methods.reset(initialValues);
-      }
+      methods.reset({
+        ...initialValues,
+        ...(dialogType === 'edit' ? (currentItem as Partial<T>) : {}),
+      });
     }
   }, [currentItem, isOpen, dialogType, methods, initialValues]);
 
   return (
     <Dialog open={isOpen} onOpenChange={handleCancel}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px]" loading={loading}>
         <DialogHeader>
           <DialogTitle>{dialogType === 'edit' ? '修改資料' : '新增資料'}</DialogTitle>
           <DialogDescription>請填寫以下表單以提交資料。</DialogDescription>
@@ -74,11 +75,13 @@ const ModalDialog = <T extends object>({
             <FormRenderer<T> FormFields={FormFields} methods={methods} />
             <DialogFooter className="mt-10">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="mr-auto" onClick={handleCancel}>
+                <Button type="button" variant="outline" className="mr-auto" onClick={handleCancel} disabled={loading}>
                   取消
                 </Button>
               </DialogClose>
-              <Button type="submit">{dialogType === 'edit' ? '修改' : '新增'}</Button>
+              <Button type="submit" disabled={loading}>
+                {dialogType === 'edit' ? '修改' : '新增'} <ClipLoading loading={loading} />
+              </Button>
             </DialogFooter>
           </form>
         </FormProvider>

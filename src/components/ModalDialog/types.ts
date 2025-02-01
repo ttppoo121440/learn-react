@@ -12,4 +12,5 @@ export interface ModalDialogProps<T extends FieldValues> {
   createData: UseMutateFunction<AxiosResponse<T>, AxiosError, T>;
   updateData: UseMutateFunction<AxiosResponse<T>, AxiosError, T>;
   transformToDto?: (data: T) => T;
+  loading: boolean;
 }
