@@ -9,7 +9,12 @@ import { useToast } from './use-toast';
 export const useUploadMutation = (): UseMutationResult<uploadResponseType, AxiosError, uploadSchemaType, unknown> => {
   const { toast } = useToast();
   return useMutation({
-    mutationFn: uploadApi.create,
+    mutationFn: async (data: uploadSchemaType) => {
+      toast({
+        description: '上傳中請稍後...',
+      });
+      return uploadApi.create(data);
+    },
     onSuccess: () => {
       toast({
         description: '上傳成功!',
