@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { DetailProductProps } from '@/types/productsType';
 
-import Loading from './Loading';
+import Loading from './TableLoading';
 
 const DetailProduct = ({ products }: DetailProductProps) => {
   const [pic, setPic] = useState<string>(products?.imageUrl);

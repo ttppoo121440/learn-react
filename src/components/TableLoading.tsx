@@ -1,4 +1,4 @@
-const Loading = () => {
+const TableLoading = () => {
   return (
     <div>
       <h2 className="mb-4 text-2xl font-semibold">請選擇一個商品查看</h2>
@@ -27,4 +27,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default TableLoading;
