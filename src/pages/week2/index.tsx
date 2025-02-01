@@ -23,7 +23,12 @@ const Week2 = () => {
 
   const getProducts = async () => {
     const result = await productApi.all({});
-    setProducts(result.products);
+    setProducts(() =>
+      result.products.map((item) => ({
+        ...item,
+        imageUrl: typeof item.imageUrl === 'string' ? item.imageUrl : '',
+      })),
+    );
   };
 
   useEffect(() => {
