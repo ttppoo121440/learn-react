@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { ProductVoType } from '@/api/services/product/types';
+import ClipLoading from '@/components/ClipLoading';
 import ModalDialog from '@/components/ModalDialog';
 import { DataTablePagination } from '@/components/Table/DataTablePagination';
 import TableContent from '@/components/Table/TableContent';
@@ -28,8 +29,8 @@ const ProductManagement = () => {
   const { currentPage } = usePaginationStore();
   const { data, isFetching } = useGetProducts({ page: currentPage + 1, category: '' });
   const totalPages = data?.pagination.total_pages || 0;
-  const { mutate: uploadImageUrl, data: imageUrlResult } = useUploadMutation();
-  const { mutate: uploadImagesUrl, data: imagesUrlResult } = useUploadMutation();
+  const { mutate: uploadImageUrl, data: imageUrlResult, isPending: uploadImageUrlLoading } = useUploadMutation();
+  const { mutate: uploadImagesUrl, data: imagesUrlResult, isPending: uploadImagesUrlLoading } = useUploadMutation();
   const { form, productFormFields, initialValues } = useFormConfig({
     uploadImageUrl,
     imageUrlResult,
@@ -52,7 +53,12 @@ const ProductManagement = () => {
     <div className="px-5">
       <div className="my-5 flex">
         <h1 className="mr-auto text-5xl">產品管理</h1>
-        <Button onClick={() => openDialog('add')}>新增產品</Button>
+        <Button disabled={isFetching} onClick={() => openDialog('add')}>
+          新增產品
+          <div>
+            <ClipLoading loading={isFetching} />
+          </div>
+        </Button>
       </div>
       <ModalDialog<ProductVoType>
         initialValues={initialValues}
@@ -60,6 +66,7 @@ const ProductManagement = () => {
         methods={form}
         createData={createProduct}
         updateData={updateProduct}
+        loading={isFetching || uploadImageUrlLoading || uploadImagesUrlLoading}
       />
       <TableContent table={table} isLoading={isFetching} />
       <DataTablePagination totalPages={totalPages} />
