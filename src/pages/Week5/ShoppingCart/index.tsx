@@ -34,7 +34,7 @@ const ShoppingCart = () => {
 
   return (
     <div className="mx-auto max-w-3xl p-4">
-      <h1 className="mb-4 text-2xl font-bold">購物車</h1>
+      <h1 className="mb-4 text-5xl font-bold">購物車</h1>
       {data?.carts.length === 0 ? (
         <p className="text-gray-500">購物車是空的</p>
       ) : (
