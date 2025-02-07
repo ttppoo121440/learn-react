@@ -63,7 +63,7 @@ const FormInput = <T extends FieldValues>({
         render={({ field: { ref } }) => (
           <FormItem>
             {required && <span className="text-red-500">*</span>}
-            <FormLabel>{label}</FormLabel>
+            <FormLabel htmlFor={name as Path<T>}>{label}</FormLabel>
             <FormControl>
               {type === 'file' ? (
                 <Input type="file" placeholder={placeholder} onChange={handleFileChange} ref={ref} accept="image/*" />
@@ -73,6 +73,7 @@ const FormInput = <T extends FieldValues>({
                   control={control}
                   render={({ field }) => (
                     <Input
+                      id={name as Path<T>}
                       className={className}
                       placeholder={placeholder}
                       {...field}
