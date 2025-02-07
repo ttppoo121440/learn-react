@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { ProductVoType } from '@/api/services/product/types';
+import { ProductVoType } from '@/api/services/adminProductApi/types';
 import { uploadResponseType, uploadSchemaType } from '@/api/services/upload/types';
 import { FormFieldConfig } from '@/components/FormRenderer/types';
 import { ProductVoSchema } from '@/schema/productSchema';
