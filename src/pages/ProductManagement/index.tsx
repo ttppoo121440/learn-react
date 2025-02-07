@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { ProductVoType } from '@/api/services/product/types';
+import { ProductVoType } from '@/api/services/adminProductApi/types';
 import ClipLoading from '@/components/ClipLoading';
 import ModalDialog from '@/components/ModalDialog';
 import { DataTablePagination } from '@/components/Table/DataTablePagination';
@@ -9,10 +9,10 @@ import { Button } from '@/components/ui/button';
 import useTableConfig from '@/components/useTableConfig';
 import {
   useDeleteProductMutation,
-  useGetProducts,
+  useGetAdminProducts,
   usePostProductMutation,
   useUpdateProductMutation,
-} from '@/hooks/useProduct';
+} from '@/hooks/useAdminProduct';
 import { useUploadMutation } from '@/hooks/useUpload';
 import useDialogStore from '@/store/dialogStore';
 import usePaginationStore from '@/store/paginationStore';
@@ -27,7 +27,7 @@ const ProductManagement = () => {
 
   const { openDialog } = useDialogStore();
   const { currentPage } = usePaginationStore();
-  const { data, isFetching } = useGetProducts({ page: currentPage + 1, category: '' });
+  const { data, isFetching } = useGetAdminProducts({ page: currentPage + 1, category: '' });
   const totalPages = data?.pagination.total_pages || 0;
   const { mutate: uploadImageUrl, data: imageUrlResult, isPending: uploadImageUrlLoading } = useUploadMutation();
   const { mutate: uploadImagesUrl, data: imagesUrlResult, isPending: uploadImagesUrlLoading } = useUploadMutation();
