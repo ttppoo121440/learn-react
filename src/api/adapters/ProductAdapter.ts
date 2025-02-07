@@ -1,4 +1,4 @@
-import { BaseProductApiType, ProductVoType } from '@/api/services/product/types';
+import { BaseProductApiType, ProductVoType } from '@/api/services/adminProductApi/types';
 import { BaseProductSchema, ProductVoSchema } from '@/schema/productSchema';
 import { BaseAdapter } from '@/utils/Adapter';
 export class ProductAdapter extends BaseAdapter<BaseProductApiType, ProductVoType> {
