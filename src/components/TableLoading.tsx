@@ -2,7 +2,7 @@ const TableLoading = () => {
   return (
     <div>
       <h2 className="mb-4 text-2xl font-semibold">請選擇一個商品查看</h2>
-      <div className="overflow-hidden rounded bg-white shadow-md">
+      <div className="overflow-hidden rounded shadow-md">
         <div className="h-64 w-full animate-pulse bg-gray-200"></div>
         <div className="p-4">
           <div className="flex items-center">

@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 const ProductList = ({ products, setDetailProduct }: ProductListProps) => {
   return (
     <>
-      <tr key={products.id} className="text-black hover:bg-gray-50">
+      <tr key={products.id}>
         <td className="border border-gray-200 px-4 py-2">{products.title}</td>
         <td className="border border-gray-200 px-4 py-2">{products.origin_price}</td>
         <td className="border border-gray-200 px-4 py-2">{products.price}</td>

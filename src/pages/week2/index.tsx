@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { productApi } from '@/api/services/product';
+import { adminProductApi } from '@/api/services/adminProductApi';
 import { signFlowApi } from '@/api/services/signFlow';
 import DetailProduct from '@/components/DetailProduct';
 import ProductList from '@/components/ProductList';
@@ -22,7 +22,7 @@ const Week2 = () => {
   };
 
   const getProducts = async () => {
-    const result = await productApi.all({});
+    const result = await adminProductApi.all({});
     setProducts(() =>
       result.products.map((item) => ({
         ...item,
@@ -44,9 +44,9 @@ const Week2 = () => {
               <h2 className="mb-4 text-2xl font-semibold">產品列表</h2>
               <table className="w-full table-auto border-collapse border border-gray-200 text-left">
                 <thead>
-                  <tr className="bg-gray-100">
+                  <tr>
                     {tableTitle.map((title) => (
-                      <th key={title} className="border border-gray-200 px-4 py-2 text-black">
+                      <th key={title} className="border border-gray-200 px-4 py-2">
                         {title}
                       </th>
                     ))}

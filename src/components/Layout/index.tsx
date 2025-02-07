@@ -11,7 +11,7 @@ const Layout = ({ children }: ProviderProps) => {
     <>
       <Navbar />
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <div className="flex-1 ">{children}</div>
+        <div className="flex-1 bg-black">{children}</div>
       </ThemeProvider>
       <Toaster />
       <Footer />

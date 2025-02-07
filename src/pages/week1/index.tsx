@@ -25,9 +25,9 @@ const Week1 = () => {
           <h2 className="mb-4 text-2xl font-semibold">產品列表</h2>
           <table className="w-full table-auto border-collapse border border-gray-200 text-left">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 {tableTitle.map((title) => (
-                  <th key={title} className="border border-gray-200 px-4 py-2 text-black">
+                  <th key={title} className="border border-gray-200 px-4 py-2">
                     {title}
                   </th>
                 ))}
