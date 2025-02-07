@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import Zoom from 'react-medium-image-zoom';
 
-import { ProductVoType } from '@/api/services/product/types';
+import { ProductVoType } from '@/api/services/adminProductApi/types';
 import DeleteDialog from '@/components/DeleteDialog';
 import Icons from '@/components/Icons';
 import { Button } from '@/components/ui/button';
