@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 import { CartItemType } from '@/api/services/cartApi/types';
 import ClipLoading from '@/components/ClipLoading';
@@ -12,6 +12,7 @@ const ShoppingCart = () => {
   const { mutate: deleteCartItem } = useDeleteCartMutation();
   const { mutate: deleteAllCartItem } = useDeleteAllCartMutation();
   const { mutate: updateCartItem } = useUpdateCartMutation();
+  const location = useLocation();
 
   const updateQuantity = (item: CartItemType, change: number) => {
     const newQty = Math.max(1, item.qty + change);
@@ -92,7 +93,7 @@ const ShoppingCart = () => {
             移除全部
           </Button>
           <Button className="mt-4 w-full" asChild>
-            <Link to="/week5/checkout">前往結帳</Link>
+            <Link to={`${location.pathname}/checkout`}>前往結帳</Link>
           </Button>
         </div>
       )}
