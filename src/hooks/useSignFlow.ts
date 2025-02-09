@@ -38,10 +38,16 @@ export const useSigInMutation = () => {
 
 export const useIsCheckAuthMutation = () => {
   const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: signFlowApi.isCheckAuth,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [signFlowKeys.key] });
+      toast({
+        description: '已登入!',
+      });
+      navigate('/week3');
     },
     onError: (error) => {
       console.error('Error:', error);
