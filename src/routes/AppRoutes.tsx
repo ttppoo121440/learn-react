@@ -13,6 +13,7 @@ import Checkout from '@/pages/Week5/Checkout';
 import DetailProduct from '@/pages/Week5/DetailProduct';
 import ProductsList from '@/pages/Week5/ProductsList';
 import ShoppingCart from '@/pages/Week5/ShoppingCart';
+import Week6 from '@/pages/Week6';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -37,10 +38,21 @@ const AppRoutes = () => {
           </Route>
           <Route path="/week5" element={<Week5 />}>
             <Route index element={<Navigate to="ProductsList" />} />
-            <Route path="ProductsList" element={<ProductsList />} />
+            <Route path="ProductsList">
+              <Route index element={<ProductsList />} />
+              <Route path=":id" element={<DetailProduct />} />
+            </Route>
             <Route path="ShoppingCart" element={<ShoppingCart />} />
-            <Route path="Checkout" element={<Checkout />} />
-            <Route path="ProductsList/DetailProduct/:id" element={<DetailProduct />} />
+            <Route path="ShoppingCart/Checkout" element={<Checkout />} />
+          </Route>
+          <Route path="/week6" element={<Week6 />}>
+            <Route index element={<Navigate to="ProductsList" />} />
+            <Route path="ProductsList">
+              <Route index element={<ProductsList />} />
+              <Route path=":id" element={<DetailProduct />} />
+            </Route>
+            <Route path="ShoppingCart" element={<ShoppingCart />} />
+            <Route path="ShoppingCart/Checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </Layout>
