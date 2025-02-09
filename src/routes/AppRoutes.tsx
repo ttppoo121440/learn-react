@@ -1,18 +1,18 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Layout from '@/components/Layout';
+import Checkout from '@/pages/Checkout';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import ProductManagement from '@/pages/ProductManagement';
+import ProductsList from '@/pages/ProductsList';
+import DetailProduct from '@/pages/ProductsList/DetailProduct';
+import ShoppingCart from '@/pages/ShoppingCart';
 import Week1 from '@/pages/Week1';
 import Week2 from '@/pages/Week2';
 import Week3 from '@/pages/Week3';
 import Week4 from '@/pages/Week4';
 import Week5 from '@/pages/Week5';
-import Checkout from '@/pages/Week5/Checkout';
-import DetailProduct from '@/pages/Week5/DetailProduct';
-import ProductsList from '@/pages/Week5/ProductsList';
-import ShoppingCart from '@/pages/Week5/ShoppingCart';
 import Week6 from '@/pages/Week6';
 
 import PrivateRoute from './PrivateRoute';
