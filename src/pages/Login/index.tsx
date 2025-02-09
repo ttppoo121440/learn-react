@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { FormProvider } from 'react-hook-form';
 
 import { FormLogin } from '@/api/services/signFlow/types';
 import FormRenderer from '@/components/FormRenderer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useSigInMutation } from '@/hooks/useSignFlow';
+import { useIsCheckAuthMutation, useSigInMutation } from '@/hooks/useSignFlow';
 import { cn } from '@/lib/utils';
 
 import useFormConfig from './formConfig';
@@ -12,10 +13,15 @@ import useFormConfig from './formConfig';
 const Login = () => {
   const { form, loginFormFields } = useFormConfig();
   const { mutate: sigIn } = useSigInMutation();
+  const { mutate: isCheck } = useIsCheckAuthMutation();
 
   const handleSubmit = async (data: FormLogin) => {
     sigIn(data);
   };
+
+  useEffect(() => {
+    isCheck();
+  }, [isCheck]);
 
   return (
     <div className="container mx-auto flex h-screen items-center justify-center">
