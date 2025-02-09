@@ -17,7 +17,7 @@ const ProductsList = () => {
 
   const goToDetailProduct = (id: string) => {
     console.log(id);
-    navigate(`DetailProduct/${id}`);
+    navigate(`${id}`);
   };
 
   const addCartItem = (id: string) => {
